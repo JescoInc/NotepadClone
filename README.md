@@ -6,6 +6,6 @@ JescoInc will be instructed to work through a series of smaller objectives that 
 
 All objectives given to date will be listed below, and marked (COMPLETE) once completed.  As each objective is completed, any new objectives will be added to the end of the list.
 
-###Objectives###
+##Objectives##
 * Load text from text file and display in TextBox on windows form.  Loading should be triggered from Load menu option and should use OpenFileDialog. The only controls that should be added to the form are the top menu, and a textbox.
 * Save text from the textbox to a file.  Saving should be triggered from Save menu option and should use SaveFileDialog.
