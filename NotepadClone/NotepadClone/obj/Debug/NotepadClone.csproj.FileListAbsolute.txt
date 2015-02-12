@@ -1,0 +1,2 @@
+c:\users\jesse\documents\visual studio 2013\Projects\NotepadClone\NotepadClone\bin\Debug\NotepadClone.exe.config
+C:\Users\Jesse\Source\Repos\NotepadClone\NotepadClone\NotepadClone\bin\Debug\NotepadClone.exe.config
