@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="292" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="517" Margin="0,27,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="262" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="517" Margin="0,30,0,0" />
+        <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="507" ClipToBounds="True"/>
 
     </Grid>
 </Window>
