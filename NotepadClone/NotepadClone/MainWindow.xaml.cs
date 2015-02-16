@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NotepadClone
 {
@@ -19,10 +20,26 @@ namespace NotepadClone
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuFileSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuFileExit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
