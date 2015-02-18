@@ -34,17 +34,17 @@ namespace NotepadClone
             ofd.AddExtension = true;
             ofd.Filter = "Text|*.txt; *.cs; *.xml";
             ofd.InitialDirectory = "C:\\";
-            ofd.RestoreDirectory = true;
             ofd.ShowDialog();
 
-            if (ofd.ShowDialog() == DialogResult.HasValue)
+            try 
+            {
                 TxtBox.Text = System.IO.File.ReadAllText(ofd.FileName);
+            }
 
-            // To do... Figure out a way to circumvent the exception being thrown
-            // when you select the cancel button or press the exit button from dialog box
-                
-
-
+            catch (ArgumentException)
+            {
+                // Do nothing
+            }              
         }
 
         private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
