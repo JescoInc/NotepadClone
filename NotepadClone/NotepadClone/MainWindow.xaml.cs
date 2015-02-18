@@ -20,7 +20,7 @@ namespace NotepadClone
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {        
+    {
 
         public MainWindow()
         {
@@ -28,6 +28,21 @@ namespace NotepadClone
         }
 
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.DefaultExt = "*.txt";
+            ofd.AddExtension = true;
+            ofd.Filter = "Text|*.txt; *.cs; *.xml";
+            ofd.InitialDirectory = "C:\\";
+            ofd.ShowDialog();
+
+            var reader = new StreamReader();
+            reader.ReadToEnd();
+
+
+        }
+
+        private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
         {
 
         }

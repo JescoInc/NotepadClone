@@ -10,6 +10,7 @@
         <Menu Grid.Row="0" >
             <MenuItem Header="File" Name="MenuFile">
                 <MenuItem Header="Load" Name="MenuFileLoad" HorizontalAlignment="Center" Click="MenuFileLoad_Click"/>
+                <MenuItem Header="Save As" Name="MenuFileSaveAs" HorizontalAlignment="Center" Click="MenuFileSaveAs_Click"/>
                 <MenuItem Header="Save" Name="MenuFileSave" HorizontalAlignment="Center" Click="MenuFileSave_Click"/>
                 <Separator/>
                 <MenuItem Header="Exit" Name="MenuFileExit" Click="MenuFileExit_Click" />
