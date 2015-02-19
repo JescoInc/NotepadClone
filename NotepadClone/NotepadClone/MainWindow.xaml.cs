@@ -21,6 +21,7 @@ namespace NotepadClone
     /// </summary>
     public partial class MainWindow : Window
     {
+        SaveFileDialog sfd = new SaveFileDialog();
 
         public MainWindow()
         {
@@ -29,11 +30,12 @@ namespace NotepadClone
 
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
         {
-            var ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = @"C:\";
+            ofd.RestoreDirectory = true;
             ofd.DefaultExt = "*.txt";
             ofd.AddExtension = true;
             ofd.Filter = "Text|*.txt; *.cs; *.xml";
-            ofd.InitialDirectory = "C:\\";
             ofd.ShowDialog();
 
             try 
@@ -44,12 +46,34 @@ namespace NotepadClone
             catch (ArgumentException)
             {
                 // Do nothing
-            }              
+            } 
         }
 
         private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
         {
+            string path = @"C:\";
+            sfd.DefaultExt = "*.txt";
+            sfd.Filter = "Text|*.txt; *.cs; *.xml";
+            sfd.AddExtension = true;
+            sfd.InitialDirectory = path;
+            sfd.RestoreDirectory = true;
+            sfd.OverwritePrompt = true;
+            sfd.ShowDialog();
 
+            try
+            {
+                System.IO.File.WriteAllText(path,TxtBox.Text,Encoding.UTF8);     
+            }
+
+            catch (ArgumentException)
+            {
+                // Do nothing
+            }    
+
+            catch(UnauthorizedAccessException)
+            {
+                MessageBox.Show("Access Denied");
+            }
         }
 
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
