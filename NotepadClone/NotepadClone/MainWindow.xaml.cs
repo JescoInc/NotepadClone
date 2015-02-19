@@ -21,7 +21,9 @@ namespace NotepadClone
     /// </summary>
     public partial class MainWindow : Window
     {
-        SaveFileDialog sfd = new SaveFileDialog();
+
+        private const string fileFilter = "Text Files|*.txt|All Files|*.*";
+        private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         public MainWindow()
         {
@@ -31,11 +33,11 @@ namespace NotepadClone
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = @"C:\";
+            ofd.InitialDirectory = currentPath;
             ofd.RestoreDirectory = true;
             ofd.DefaultExt = "*.txt";
             ofd.AddExtension = true;
-            ofd.Filter = "Text|*.txt; *.cs; *.xml";
+            ofd.Filter = fileFilter;
             ofd.ShowDialog();
 
             try 
@@ -51,18 +53,18 @@ namespace NotepadClone
 
         private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"C:\";
+            SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.txt";
-            sfd.Filter = "Text|*.txt; *.cs; *.xml";
+            sfd.Filter = fileFilter;
             sfd.AddExtension = true;
-            sfd.InitialDirectory = path;
+            sfd.InitialDirectory = currentPath;
             sfd.RestoreDirectory = true;
             sfd.OverwritePrompt = true;
             sfd.ShowDialog();
 
             try
             {
-                System.IO.File.WriteAllText(path,TxtBox.Text,Encoding.UTF8);     
+                System.IO.File.WriteAllText(currentPath,TxtBox.Text,Encoding.UTF8);     
             }
 
             catch (ArgumentException)
@@ -83,7 +85,7 @@ namespace NotepadClone
 
         private void MenuFileExit_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }
