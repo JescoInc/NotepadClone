@@ -62,21 +62,17 @@ namespace NotepadClone
             sfd.OverwritePrompt = true;
             sfd.ShowDialog();
 
-            try
-            {
-                System.IO.File.WriteAllText(currentPath,TxtBox.Text,Encoding.UTF8);     
-            }
+            if (sfd.ShowDialog() != true)
+                return;
 
-            catch (ArgumentException)
-            {
-                // Do nothing
-            }    
-
-            catch(UnauthorizedAccessException)
-            {
-                MessageBox.Show("Access Denied");
+            else
+                using (var stream = sfd.OpenFile())
+                using (var writer = new StreamWriter(stream, Encoding.UTF8))
+                {
+                    writer.Write(TxtBox.Text);
+                    writer.Close();
+                }
             }
-        }
 
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
         {
