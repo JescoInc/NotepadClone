@@ -16,64 +16,56 @@ using System.Windows.Navigation;
 
 namespace NotepadClone
 {
-    /// Magius96: so, back to the current file path...
-    /// when you load the file, get the file name and path from the ofd, and store that at the class level -- DONE
-    /// do the same in the saveas method -- DONE
-    /// 3. then, copy the saving code from the saveas method to the save method,but remove the sfd 
-    /// 3. instead, use the filename and path you stored to overwrite the existing file
-
-    // I'm wondering what I should do to get started with what Magius says I should do. Any direction you could lead me in?
 
     public partial class MainWindow : Window
     {
         OpenFileDialog ofd = new OpenFileDialog();
+        SaveFileDialog sfd = new SaveFileDialog();
         private const string fileFilter = "Text Files|*.txt|All Files|*.*";
-
-        //Current path will store the path of the file + name?
-
-        //But will it?
-
-        //then whats the purpose of it?
-
-        //oh, ok.
-
-        // To set the default path of where the Initial path will be
         private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-        private string filePathAndName;
+        private string filePathAndName = "";
+        private bool IsTrue = true;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void NewFile_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+
+
+        }
+
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
         {
             ofd.InitialDirectory = currentPath;
-            ofd.FileName = "*.txt";
             ofd.RestoreDirectory = true;
             ofd.DefaultExt = "*.txt";
             ofd.AddExtension = true;
             ofd.Filter = fileFilter;
-            ofd.ShowDialog();
 
-            try
+            if (ofd.ShowDialog() == true)
             {
                 filePathAndName = ofd.FileName;
-                TxtBox.Text = System.IO.File.ReadAllText(ofd.FileName);
-            }
 
-            catch (ArgumentException)
-            {
-                // Do nothing
+                try
+                {
+                    TxtBox.Text = System.IO.File.ReadAllText(filePathAndName);
+                }
+
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
         }
 
         private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "*.txt";
-            sfd.FileName = "*.txt";
             sfd.Filter = fileFilter;
             sfd.AddExtension = true;
             sfd.InitialDirectory = currentPath;
@@ -82,13 +74,10 @@ namespace NotepadClone
 
             if (sfd.ShowDialog() == true)
             {
-                filePathAndName = sfd.FileName; 
-                using (var stream = sfd.OpenFile())
-                using (var writer = new StreamWriter(stream, Encoding.UTF8))
-                {
-                    writer.Write(TxtBox.Text);
-                    writer.Close();
-                }
+                filePathAndName = sfd.FileName;
+                var fileStream = new StreamWriter(filePathAndName, false);
+                fileStream.Write(TxtBox.Text);
+                fileStream.Close();
             }
 
             else
@@ -100,20 +89,16 @@ namespace NotepadClone
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
         {
           
-          if(ofd.ShowDialog() == true)
+            if( string.IsNullOrEmpty(filePathAndName))
+            {
+                MenuFileSaveAs_Click(sender, e);
+                return;
+            }
 
-          {
-              filePathAndName = "";
-          }
+            var fileStream = new StreamWriter(filePathAndName, false);
+            fileStream.Write(TxtBox.Text);
+            fileStream.Close();
 
-          else
-          {
-
-            var writer = new StreamWriter(filePathAndName, Encoding.UTF8);
-              writer.Write(TxtBox.Text);
-              writer.Close();
-
-          }
         }
 
         private void MenuFileExit_Click(object sender, RoutedEventArgs e)
