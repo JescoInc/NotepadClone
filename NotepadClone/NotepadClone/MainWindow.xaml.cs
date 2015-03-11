@@ -24,7 +24,7 @@ namespace NotepadClone
         private const string fileFilter = "Text Files|*.txt|All Files|*.*";
         private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string filePathAndName = "";
-        private bool IsTrue = true;
+        private bool IsChanged = true;
 
         public MainWindow()
         {
@@ -33,10 +33,8 @@ namespace NotepadClone
 
         private void NewFile_Click(object sender, RoutedEventArgs e)
         {
-            
 
-
-
+            MenuFileSaveAs_Click(sender, e);
         }
 
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
@@ -89,7 +87,7 @@ namespace NotepadClone
         private void MenuFileSave_Click(object sender, RoutedEventArgs e)
         {
           
-            if( string.IsNullOrEmpty(filePathAndName))
+            if (string.IsNullOrEmpty(filePathAndName))
             {
                 MenuFileSaveAs_Click(sender, e);
                 return;
