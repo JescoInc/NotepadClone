@@ -13,18 +13,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace NotepadClone
 {
 
     public partial class MainWindow : Window
     {
-        OpenFileDialog ofd = new OpenFileDialog();
-        SaveFileDialog sfd = new SaveFileDialog();
+        Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+        Microsoft.Win32.SaveFileDialog sfd = new Microsoft.Win32.SaveFileDialog();
         private const string fileFilter = "Text Files|*.txt|All Files|*.*";
         private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string filePathAndName = "";
-        private bool IsChanged = true;
 
         public MainWindow()
         {
@@ -56,7 +57,7 @@ namespace NotepadClone
 
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    System.Windows.MessageBox.Show(exception.Message);
                 }
             }
         }
@@ -102,6 +103,30 @@ namespace NotepadClone
         private void MenuFileExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void SpellCheck_Click(object sender, RoutedEventArgs e)
+        {
+                TxtBox.SpellCheck.IsEnabled = true;
+        }
+
+        private void FontType_Click(object sender, RoutedEventArgs e)
+        {
+            FontDialog fontbox = new FontDialog();
+
+            if (fontbox.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            {
+                System.Drawing.Font font = fontbox.Font;
+                TxtBox.FontFamily = new System.Windows.Media.FontFamily(font.Name);
+                TxtBox.FontSize = font.Size;
+                TxtBox.FontWeight = font.Bold ? FontWeights.Bold : FontWeights.Regular;
+                TxtBox.FontStyle = font.Italic ? FontStyles.Italic : FontStyles.Normal;
+            }
+        }
+
+        private void WordWrap_Click(object sender, RoutedEventArgs e)
+        {
+            TxtBox.SpellCheck.IsEnabled = true;
         }
     }
 }
