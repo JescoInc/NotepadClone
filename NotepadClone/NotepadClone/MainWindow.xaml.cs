@@ -26,7 +26,7 @@ namespace NotepadClone
         private const string fileFilter = "Text Files|*.txt|All Files|*.*";
         private string currentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private string filePathAndName = "";
-        private bool IsChanged = false;
+        private bool IsChanged = true;
 
         public MainWindow()
         {
@@ -35,10 +35,11 @@ namespace NotepadClone
 
         private void NewFile_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TxtBox.Text) == IsChanged)
+            if (string.IsNullOrWhiteSpace(TxtBox.Text) != IsChanged)
             {
                 MenuFileSaveAs_Click(sender, e);
             }
+
             else
                 TxtBox.Clear();
         }
@@ -112,7 +113,14 @@ namespace NotepadClone
 
         private void SpellCheck_Click(object sender, RoutedEventArgs e)
         {
+            if (IsChanged != false)
+            {
                 TxtBox.SpellCheck.IsEnabled = true;
+                SpellCheck.Language.GetSpecificCulture();
+            }
+
+            else
+                TxtBox.SpellCheck.IsEnabled = false;
         }
 
         private void FontType_Click(object sender, RoutedEventArgs e)
@@ -132,6 +140,7 @@ namespace NotepadClone
         private void WordWrap_Click(object sender, RoutedEventArgs e)
         {
             TxtBox.SpellCheck.IsEnabled = true;
+            SpellCheck.Language.GetSpecificCulture();
         }
     }
 }
