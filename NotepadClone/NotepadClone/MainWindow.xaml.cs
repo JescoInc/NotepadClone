@@ -139,8 +139,12 @@ namespace NotepadClone
 
         private void WordWrap_Click(object sender, RoutedEventArgs e)
         {
-            TxtBox.SpellCheck.IsEnabled = true;
-            SpellCheck.Language.GetSpecificCulture();
+            if (IsChanged != false)
+            {
+                TxtBox.TextWrapping = TextWrapping.Wrap;
+            }
+            else
+                TxtBox.TextWrapping = TextWrapping.NoWrap;
         }
     }
 }
