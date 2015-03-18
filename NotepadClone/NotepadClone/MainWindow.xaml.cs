@@ -41,7 +41,9 @@ namespace NotepadClone
             }
 
             else
+            {
                 TxtBox.Clear();
+            }
         }
 
         private void MenuFileLoad_Click(object sender, RoutedEventArgs e)
