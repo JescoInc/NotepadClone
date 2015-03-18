@@ -118,13 +118,14 @@ namespace NotepadClone
             if (IsChanged != false)
             {
                 TxtBox.SpellCheck.IsEnabled = true;
+                TxtBox.SpellCheck.SpellingReform = SpellingReform.PreAndPostreform;
                 SpellCheck.Language.GetSpecificCulture();
             }
 
-            else
+            else if (IsChanged != true)
             {
                 TxtBox.SpellCheck.IsEnabled = false;
-                SpellCheck.Language.GetSpecificCulture();
+
             }
         }
 
@@ -154,7 +155,7 @@ namespace NotepadClone
                 TxtBox.TextWrapping = TextWrapping.Wrap;
             }
 
-            else
+            else if (IsChanged != true)
             {
                 TxtBox.TextWrapping = TextWrapping.NoWrap;
             }
