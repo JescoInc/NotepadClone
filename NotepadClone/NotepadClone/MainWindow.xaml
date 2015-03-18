@@ -16,9 +16,9 @@
                 <MenuItem Header="Exit" Name="MenuFileExit" HorizontalAlignment="Center" Click="MenuFileExit_Click" />
             </MenuItem>
             <MenuItem Header="Format" x:Name="FormatSelection" HorizontalAlignment="Center">
-                <MenuItem Header="Word Wrap" Name="WordWrap" HorizontalAlignment="Center" Click="WordWrap_Click"/>
+                <MenuItem Header="Word Wrap" Name="WordWrap" HorizontalAlignment="Center" Click="WordWrap_Click" IsCheckable="True"/>
                 <MenuItem Header="Font" Name="FontType" HorizontalAlignment="Center" Click="FontType_Click"/>
-                <MenuItem Header="Spell Check" Name="SpellCheck" HorizontalAlignment="Left" Width="146" Click="SpellCheck_Click"/>
+                <MenuItem Header="Spell Check" Name="SpellCheck"  HorizontalAlignment="Left" Width="146" Click="SpellCheck_Click" IsCheckable="True"/>
             </MenuItem>
         </Menu>
         <Menu Grid.Row="1"/>

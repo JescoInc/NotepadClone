@@ -120,20 +120,28 @@ namespace NotepadClone
             }
 
             else
+            {
                 TxtBox.SpellCheck.IsEnabled = false;
+                SpellCheck.Language.GetSpecificCulture();
+            }
         }
 
         private void FontType_Click(object sender, RoutedEventArgs e)
         {
             FontDialog fontbox = new FontDialog();
 
-            if (fontbox.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
+            if (fontbox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 System.Drawing.Font font = fontbox.Font;
                 TxtBox.FontFamily = new System.Windows.Media.FontFamily(font.Name);
                 TxtBox.FontSize = font.Size;
                 TxtBox.FontWeight = font.Bold ? FontWeights.Bold : FontWeights.Regular;
                 TxtBox.FontStyle = font.Italic ? FontStyles.Italic : FontStyles.Normal;
+            }
+
+            else
+            {
+                return;
             }
         }
 
@@ -143,8 +151,11 @@ namespace NotepadClone
             {
                 TxtBox.TextWrapping = TextWrapping.Wrap;
             }
+
             else
+            {
                 TxtBox.TextWrapping = TextWrapping.NoWrap;
+            }
         }
     }
 }
