@@ -68,6 +68,11 @@ namespace NotepadClone
                     System.Windows.MessageBox.Show(exception.Message);
                 }
             }
+
+            else
+            {
+                MenuFileSaveAs_Click(sender, e);
+            }
         }
 
         private void MenuFileSaveAs_Click(object sender, RoutedEventArgs e)
@@ -87,7 +92,7 @@ namespace NotepadClone
                 fileStream.Close();
             }
 
-            else
+            else if (sfd.ShowDialog() == false)
             {
                 return;
             }
@@ -115,17 +120,16 @@ namespace NotepadClone
 
         private void SpellCheck_Click(object sender, RoutedEventArgs e)
         {
-            if (IsChanged != false)
+            if (SpellCheck.IsChecked)
             {
                 TxtBox.SpellCheck.IsEnabled = true;
-                TxtBox.SpellCheck.SpellingReform = SpellingReform.PreAndPostreform;
                 SpellCheck.Language.GetSpecificCulture();
             }
 
-            else if (IsChanged != true)
+            else
             {
                 TxtBox.SpellCheck.IsEnabled = false;
-
+                SpellCheck.Language.GetSpecificCulture();
             }
         }
 
@@ -150,14 +154,14 @@ namespace NotepadClone
 
         private void WordWrap_Click(object sender, RoutedEventArgs e)
         {
-            if (IsChanged != false)
-            {
-                TxtBox.TextWrapping = TextWrapping.Wrap;
-            }
-
-            else if (IsChanged != true)
+            if (TxtBox.TextWrapping == TextWrapping.Wrap)
             {
                 TxtBox.TextWrapping = TextWrapping.NoWrap;
+            }
+
+            else
+            {
+                TxtBox.TextWrapping = TextWrapping.Wrap;
             }
         }
     }
