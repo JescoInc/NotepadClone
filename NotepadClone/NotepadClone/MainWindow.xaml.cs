@@ -154,14 +154,14 @@ namespace NotepadClone
 
         private void WordWrap_Click(object sender, RoutedEventArgs e)
         {
-            if (TxtBox.TextWrapping == TextWrapping.Wrap)
+            if (WordWrap.IsChecked)
             {
-                TxtBox.TextWrapping = TextWrapping.NoWrap;
+                TxtBox.TextWrapping = TextWrapping.Wrap;
             }
 
             else
             {
-                TxtBox.TextWrapping = TextWrapping.Wrap;
+                TxtBox.TextWrapping = TextWrapping.NoWrap;
             }
         }
     }
