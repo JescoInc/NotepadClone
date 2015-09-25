@@ -10,15 +10,40 @@
         <Menu Grid.Row="0" >
             <MenuItem Header="File" Name="MenuFile">
                 <MenuItem Header="New" Name="NewFile" HorizontalAlignment="Left" Click="NewFile_Click"/>
-                <MenuItem Header="Load" Name="MenuFileLoad" HorizontalAlignment="Left" Click="MenuFileLoad_Click"/>
+                <MenuItem Header="Open" Name="MenuFileLoad" HorizontalAlignment="Left" Click="MenuFileLoad_Click"/>
+                <Separator/>
                 <MenuItem Header="Save As" Name="MenuFileSaveAs" HorizontalAlignment="Left" Click="MenuFileSaveAs_Click"/>
                 <MenuItem Header="Save" Name="MenuFileSave" HorizontalAlignment="Left" Click="MenuFileSave_Click"/>
+                <Separator/>
+                <MenuItem Header="Page Setup" Name="PageSetup" HorizontalAlignment="Left"/>
+                <MenuItem Header="Print" Name="Print" HorizontalAlignment="Left"/>
                 <MenuItem Header="Exit" Name="MenuFileExit" HorizontalAlignment="Left" Click="MenuFileExit_Click" />
+            </MenuItem>
+            <MenuItem Header="Edit" x:Name="EditSelection" HorizontalAlignment="Left">
+                <MenuItem Header="Undo" Name="Undo" HorizontalAlignment="Left"/>
+                <Separator/>
+                <MenuItem Header="Cut" Name="Cut" HorizontalAlignment="Left"/>
+                <MenuItem Header="Copy" Name="Copy" HorizontalAlignment="Left"/>
+                <MenuItem Header="Paste" Name="Paste"  HorizontalAlignment="Left"/>
+                <MenuItem Header="Delete" Name="Delete" HorizontalAlignment="Left"/>
+                <Separator/>
+                <MenuItem Header="Find" Name="Find" HorizontalAlignment="Left"/>
+                <MenuItem Header="Find Next" Name="FindNext" HorizontalAlignment="Left"/>
+                <MenuItem Header="Replace" Name="ReplaceSearch"  HorizontalAlignment="Left"/>
+                <MenuItem Header="Go To" Name="GoToSearch" HorizontalAlignment="Left"/>
+                <Separator/>
+                <MenuItem Header="Select All" Name="SelectAll" HorizontalAlignment="Left"/>
+                <MenuItem Header="Date Time" Name="CurrentDateTime" HorizontalAlignment="Left"/>
             </MenuItem>
             <MenuItem Header="Format" x:Name="FormatSelection" HorizontalAlignment="Left">
                 <MenuItem Header="Word Wrap" Name="WordWrap" HorizontalAlignment="Left" Click="WordWrap_Click" IsCheckable="True"/>
                 <MenuItem Header="Font" Name="FontType" HorizontalAlignment="Left" Click="FontType_Click"/>
                 <MenuItem Header="Spell Check" Name="SpellCheck"  HorizontalAlignment="Left" Width="146" Click="SpellCheck_Click" IsCheckable="True"/>
+            </MenuItem>
+            <MenuItem Header="Help" HorizontalAlignment="Left">
+                <MenuItem Header="View Help" Name="ViewHelp" HorizontalAlignment="Left"/>
+                <Separator/>
+                <MenuItem Header="About Notepad Clone" Name="AboutClone" HorizontalAlignment="Left"/>
             </MenuItem>
         </Menu>
         <Menu Grid.Row="1"/>
